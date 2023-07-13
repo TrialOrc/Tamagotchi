@@ -1,0 +1,9 @@
+Starting point for the Tamagotchi:
+Tamagotchi - A port of the Tamagotchi Emulator by aerospark: https://goo.gl/gaZ1fA
+
+Colors:
+[insert pantone json credit here]
+[insert color module credit here]
+
+Special Thanks:
+SwtBeat - Thank you for everything!
