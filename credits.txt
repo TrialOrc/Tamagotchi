@@ -1,5 +1,5 @@
 Starting point for the Tamagotchi:
-Tamagotchi - A port of the Tamagotchi Emulator by aerospark: https://goo.gl/gaZ1fA
+Tamagotchi - A port of the Tamagotchi Emulator by ryesalvador: https://gist.github.com/ryesalvador/e88cb2b4bbe0694d175ef2d7338abd07
 
 Colors:
 [insert pantone json credit here]

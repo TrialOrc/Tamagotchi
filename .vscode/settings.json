@@ -1,8 +1,10 @@
 {
     "cSpell.words": [
+        "blit",
         "CANEAT",
         "DEADFROMNOTEATING",
         "DEATHFROMNATURALCAUSES",
+        "KEYDOWN",
         "MOUSEBUTTONUP",
         "ndarray",
         "NEEDSTOEAT",
@@ -12,5 +14,9 @@
         "USEREVENT",
         "VIDEODRIVER",
         "windib"
+    ],
+    "python.linting.flake8Args": [
+        "--ignore=W503",
+        "--max-line-length=120"
     ]
 }
