@@ -41,8 +41,6 @@ BG_COLOR = (160, 178, 129)
 PIXEL_COLOR = (10, 12, 6)
 NONPIXEL_COLOR = (156, 170, 125)
 TRANSPARENT_COLOR = (0, 0, 0, 0)
-BTN_BORDER_COLOR = (128, 12, 24)
-BTN_CENTER_COLOR = (200, 33, 44)
 
 FPS = 30
 SECOND = 1000
@@ -80,37 +78,34 @@ def render_component(
     del pixels
 
 
-# ? The logic of do_random_event and do_cycle is odd. Could combine functions.
-def do_random_event(pet: dict) -> None:
-    num = random.randint(0, 31)
-    if num == 12:
-        pet["hunger"] += 1
-    elif num == 16:
-        pet["energy"] -= 1
-    elif num == 18:
-        pet["energy"] += 1
-    elif num == 20:
-        pet["waste"] += 1
-    elif num == 7:
-        pet["happiness"] += 1
-    elif num == 4:
-        pet["happiness"] -= 1
-
-
 def do_cycle(pet: dict, stage: int) -> None:
-    pet["age"] += 2  # ?: Why is this 2?
+    pet["age"] += 2
     if stage != 0:
-        do_random_event(pet)
-        pet["hunger"] += 1
-        pet["waste"] += 1
-        pet["energy"] -= 1
+        choice = random.choice(["hunger", "energy", "energy", "waste", "happiness", "happiness"])
+        if random.randint(0, 31) < 5:
+            if choice in ("energy", "happiness"):
+                pet[choice] += random.choice([-2, 0])
+            else:
+                pet[choice] += 2
+
+        if choice != "hunger":
+            pet["hunger"] += 1
+        if choice != "waste":
+            pet["waste"] += 1
+        if choice != "energy":
+            pet["energy"] -= 1
+
         if pet["waste"] >= WASTE_EXPUNGE:
             pet["happiness"] -= 1
 
 
-def get_offset() -> int:
-    # TODO: Change how offset works, make offset move -1, 0, or +1 between -3 and 2. This makes less jitter.
-    return random.randint(-3, 2)
+def get_offset(off: int) -> int:
+    if -3 <= off <= 3:
+        return random.choice([-1, 0, 1]) + off
+    elif off < -3:
+        return random.choice([0, 1]) + off
+    else:
+        return random.choice([-1, 0]) + off
 
 
 def get_next_frame(animation_frames: List[np.ndarray], current_frame: int) -> int:
@@ -162,7 +157,7 @@ def main():
     # Tamagotchi
     pet: dict[str, int] = {
         "hunger": 0,
-        "energy": 256,
+        "energy": 8,
         "waste": 0,
         "age": 0,
         "happiness": 0,
@@ -285,7 +280,7 @@ def main():
             else:
                 if not dead:
                     frame = get_next_frame(current_anim, frame)
-                    off = get_offset()
+                    off = get_offset(off)
                     do_cycle(pet, stage)
                     if pet["energy"] < ENERGY_PASSOUT and stage > 0:
                         pet["happiness"] -= 64

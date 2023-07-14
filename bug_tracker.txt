@@ -1,3 +1,1 @@
-current bugs:
-    Middle and right buttons don't work
-    When tama passes out it never wakes up, which gets sleep stuck at max.
+current known bugs:

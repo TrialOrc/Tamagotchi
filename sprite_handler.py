@@ -29,25 +29,25 @@ def load_animation_sprites(sprite_folder: str, num_frames: int) -> List[np.array
 sprite_folder = "sprites"
 
 # Eggs
-egg_folder = os.path.join(sprite_folder, "eggs", "egg1")  # TODO: Add more variants.
+egg_folder = os.path.join(sprite_folder, "eggs", "0")  # TODO: Add more variants.
 IDLE_EGG = load_animation_sprites(egg_folder, 2)
 
 # Babies
-baby_folder = os.path.join(sprite_folder, "babies", "baby1")
-IDLE_BABY = load_animation_sprites(os.path.join(baby_folder, "sleep"), 2)
-SLEEP_BABY = load_animation_sprites(os.path.join(baby_folder, "idle"), 2)
+baby_folder = os.path.join(sprite_folder, "babies", "0")
+IDLE_BABY = load_animation_sprites(os.path.join(baby_folder, "idle"), 2)
+SLEEP_BABY = load_animation_sprites(os.path.join(baby_folder, "sleep"), 2)
 
 # Children
-child_folder = os.path.join(sprite_folder, "children", "child1")
+child_folder = os.path.join(sprite_folder, "children", "0")
 IDLE_CHILD = load_animation_sprites(os.path.join(child_folder, "idle"), 2)
 SLEEP_CHILD = load_animation_sprites(os.path.join(child_folder, "sleep"), 2)
 
 # Teen
-# ...
+teen_folder = os.path.join(sprite_folder, "teens", "0")
 # Adult
-# ...
+adult_folder = os.path.join(sprite_folder, "adult", "0")
 # Special
-# ...
+special_folder = os.path.join(sprite_folder, "specials", "0")
 
 # Overlays
 overlay_folder = os.path.join(sprite_folder, "overlay")
